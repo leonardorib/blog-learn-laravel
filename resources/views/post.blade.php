@@ -13,9 +13,9 @@
 <body>
     <article>
         <h1>
-            <?= $post->title; ?>
+            {{ $post->title }}
         </h1>
-        <?= $post->body; ?>
+        {!! $post->body !!}
     </article>
     <a href="/">Go Back</a>
 </body>
