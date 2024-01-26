@@ -21,8 +21,8 @@ class PostFactory extends Factory
             'category_id' => \App\Models\Category::factory(),
             'title' => $this->faker->sentence,
             'slug' => $this->faker->slug,
-            'excerpt' => $this->faker->sentence,
-            'body' => '<p>' . $this->faker->paragraph . '</p>',
+            'excerpt' => '<p>' . $this->faker->paragraph . '</p>',
+            'body' => '<p>' . implode('</p><p>', $this->faker->paragraphs(6)) . '</p>',
         ];
     }
 }
