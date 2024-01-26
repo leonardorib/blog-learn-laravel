@@ -34,9 +34,9 @@
 
             <div class="mt-8 md:mt-0">
                 <a
-                    href="/"
+                    href="/register"
                     class="text-xs font-bold uppercase"
-                >Home Page</a>
+                >Register</a>
 
                 <a
                     href="#"
