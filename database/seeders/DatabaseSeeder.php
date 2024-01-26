@@ -6,7 +6,6 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 
 use App\Models\User;
-use App\Models\Category;
 use App\Models\Post;
 
 class DatabaseSeeder extends Seeder
@@ -23,11 +22,16 @@ class DatabaseSeeder extends Seeder
             'name' => 'Sara Smith',
         ]);
 
-        Post::factory(5)->create([
+        $posts = Post::factory(5)->create([
             'user_id' => $user->id,
         ]);
         Post::factory(5)->create([
             'user_id' => $user2->id,
+        ]);
+
+        Post::factory(5)->create([
+            'category_id' => $posts->first()->category_id,
+            'user_id' => $user->id,
         ]);
     }
 }
