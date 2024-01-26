@@ -32,11 +32,37 @@
                 </a>
             </div>
 
-            <div class="mt-8 md:mt-0">
-                <a
-                    href="/register"
-                    class="text-xs font-bold uppercase"
-                >Register</a>
+            <div class="mt-8 md:mt-0 flex items-center">
+                @auth
+                    <span class="text-xs font-bold uppercase">Welcome, {{ auth()->user()->name }}</span>
+                    <form
+                        method="POST"
+                        action="/logout"
+                        class="leading-4"
+                    >
+                        @csrf
+
+                        <button
+                            type="submit"
+                            class="text-xs font-semibold uppercase text-blue-500 ml-6"
+                        >
+                            Logout
+                        </button>
+                    </form>
+                @else
+                    <a
+                        href="/register"
+                        class="text-xs font-bold uppercase"
+                    >
+                        Register
+                    </a>
+                    <a
+                        href="/login"
+                        class="ml-6 text-xs font-bold uppercase"
+                    >
+                        Log In
+                    </a>
+                @endauth
 
                 <a
                     href="#"
