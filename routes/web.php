@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\PostCommentsController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegisterController;
@@ -33,26 +34,4 @@ Route::post('logout', [SessionsController::class, 'destroy'])->middleware('auth'
 
 Route::post('login', [SessionsController::class, 'store'])->middleware('guest');
 
-Route::post('newsletter', function () {
-    request()->validate(['email' => ['required', 'email']]);
-
-    $mailchimp = new \MailchimpMarketing\ApiClient();
-
-    $mailchimp->setConfig([
-        'apiKey' => config('services.mailchimp.key'),
-        'server' => config('services.mailchimp.server'),
-    ]);
-
-    try {
-        $mailchimp->lists->addListMember(config('services.mailchimp.list_id'), [
-            'email_address' => request('email'),
-            'status' => 'subscribed',
-        ]);
-    } catch (\Exception $e) {
-        throw \Illuminate\Validation\ValidationException::withMessages([
-            'email' => 'This email could not be added to our newsletter list.',
-        ]);
-    }
-
-    return redirect('/')->with('success', 'You are now signed up for our newsletter!');
-});
+Route::post('newsletter', NewsletterController::class);
