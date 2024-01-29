@@ -11,10 +11,10 @@
             <ul>
                 <li>
                     <a
-                        href="/admin/dashboard"
-                        class="{{ request()->is('admin/dashboard') ? 'text-blue-500' : '' }}"
+                        href="/admin/posts"
+                        class="{{ request()->is('admin/posts') ? 'text-blue-500' : '' }}"
                     >
-                        Dashboard
+                        All Posts
                     </a>
                 </li>
                 <li>
